@@ -1,0 +1,28 @@
+from cs1media import *
+
+def rotate_img(input_image, angle):
+    """
+    Rotate the input image by the specified angle in the clockwise direction
+
+    Args:
+        input_image: cs1media Picture object
+        angle: image representation level (angle can take value in [0, 90, 180, 270].)
+
+    Returns:
+        cs1media Picture object
+    """
+    # -----
+    # TODO: Write your code here
+    return 
+    # -----
+
+
+def main():
+    image = load_picture('./images/neobjuggi.png')
+    angle = 90
+    
+    rotated_image = rotate_img(image, angle)
+    rotated_image.show()
+
+if __name__ == '__main__':
+    main()
