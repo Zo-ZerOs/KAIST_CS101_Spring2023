@@ -1,0 +1,48 @@
+import csv
+
+def get_columns_in_csv(file_path):
+    """
+    Task 1.1 
+        Return the names of all columns from the header.
+        
+    Arg:
+        file_path (str): Path to the target csv file
+        
+    Return:
+         columns (list[str]): Names of all the columns
+    """
+    pass
+
+
+def get_song_info_of_nth_row(file_path, n):
+    """
+    Task 1.2
+        Return the song title, artist, and year of the n-th row song.
+        
+    Args:
+        file_path (str): Path to the target csv file.
+        n (int): Index of the row to get the song information. The index begins at 1, where the counting excludes the header.
+        
+    Returns:
+        song_info (Tuple(str, str, int)): Tuple of song title, artist, and year in the n-th row.
+    """
+    pass
+
+
+def main():
+    # You can modify below and test with your code.
+    
+    # Test code for Task 1.1
+    print("###### Test for Task 1.1 ######")
+    print(get_columns_in_csv('top_songs.csv'))
+    print()
+    
+    # Test code for Task 1.2
+    print("###### Test for Task 1.2 ######")
+    print(get_song_info_of_nth_row('top_songs.csv', 1))
+    print(get_song_info_of_nth_row('top_songs.csv', -1))
+    print(get_song_info_of_nth_row('top_songs.csv', 601))
+
+
+if __name__ == "__main__":
+    main()
