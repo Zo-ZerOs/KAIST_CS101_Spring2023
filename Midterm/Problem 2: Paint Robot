@@ -1,0 +1,46 @@
+from cs1robots import *
+from cs1media import *
+
+
+def paint_pixel(hubo, image, x, y):
+    ############### IMPLEMENT HERE ###############
+    r, g, b = image.get(x, y)
+    brightness = (r + g + b) // 3
+    for i in range(255 - brightness):
+        hubo.drop_beeper()
+    ##############################################
+
+
+def draw_picture(hubo, image):
+    ############### IMPLEMENT HERE ###############
+    w, h = image.size()
+    for y in range(h):
+        for x in range(w):
+            paint_pixel(hubo, image, x, y)
+            if hubo.front_is_clear():
+                hubo.move()
+        if hubo.right_is_clear():
+            for i in range(2):
+                hubo.turn_left()
+            while hubo.front_is_clear():
+                hubo.move()
+            hubo.turn_left()
+            hubo.move()
+            hubo.turn_left()
+    while not hubo.facing_north():
+        hubo.turn_left()
+    while hubo.front_is_clear():
+        hubo.move()
+    hubo.turn_left()
+    while hubo.front_is_clear():
+        hubo.move()
+    hubo.turn_left()
+    hubo.turn_left()
+    ##############################################
+
+
+if __name__ == "__main__":
+    create_world(avenues=96, streets=64)
+    hubo = Robot(street=64, beepers=255*96*64)
+    image = load_picture('elice.png')
+    draw_picture(hubo, image)
