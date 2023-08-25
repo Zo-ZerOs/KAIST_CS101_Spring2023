@@ -1,0 +1,51 @@
+# from cs1graphics import *
+# import random
+from cheat_sheet import cheat_table
+
+def convert_idx_rev_to_prop(index, reversal):
+    prop = {}
+    ########## PASTE HERE ##########
+    prop['arcana'] = 'major'
+    prop['num'] = 0
+    prop['reversal'] = False
+    ################################
+    return prop
+
+
+def generate_fortune_text(prop, cheat_table):
+    fortune_text = ''
+    major_arcana_names = ['The Fool', 'The Magician', 'The High Priestess', 'The Empress', 'The Emperor', 'The Hierophant', 'The Lovers', 'The Chariot', 'Strength', 'The Hermit', 'The Wheel of Fortune', 'Justice', 'The Hanged Man', 'Death', 'Temperance', 'The Devil', 'The Tower', 'The Star', 'The Moon', 'The Sun', 'Judgement', 'The World']
+    minor_arcana_names = ['', 'Ace', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Page', 'Knight', 'Queen', 'King']
+    ######## IMPLEMENT HERE ########
+    fortune_text = 'Minor Arcana - Eight of pentacles: caution, possible loss'
+    ################################
+    return fortune_text
+
+
+
+
+def select_cards(spread_style):
+    cards = []
+    draws = [31, 2, 56, 43, 22] # Fixed selection for easy verification
+    reversals = [True, False, False, True, False] # Fixed selection for easy verification
+    # draws = random.sample(range(78), len(spread_style))
+    # reversals = [random.choice((True, False)) for i in range(len(spread_style))]
+    for i in range(len(spread_style)):
+        prop = convert_idx_rev_to_prop(draws[i], reversals[i])
+        # img = Image('images/card_' + prop['arcana'] + '_' + str(prop['num']) + '.jpg')
+        img = None
+        cards.append((img, prop))
+    return cards
+
+
+if __name__ == '__main__':
+    spread_style = [{'coordinate': (100, 375, 0), 'question': '1. Who am I right now?'},\
+    {'coordinate': (200, 375, 0), 'question': '2. Am I on the right path?'},\
+    {'coordinate': (300, 375, 0), 'question': '3. What\'s the main obstacle standing in my way?'},\
+    {'coordinate': (400, 375, 0), 'question': '4. What circumstances are in my favor and helping me out?'},\
+    {'coordinate': (500, 375, 0), 'question': '5. How can I make progress and move forward in my life?'}]
+
+    cards = select_cards(spread_style)
+    for i in range(len(spread_style)):
+        print(spread_style[i]['question'])
+        print(generate_fortune_text(cards[i][1], cheat_table))
