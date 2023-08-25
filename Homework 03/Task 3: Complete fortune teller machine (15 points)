@@ -1,0 +1,79 @@
+from cs1graphics import *
+import random
+from cheat_sheet import cheat_table
+
+current_text_written = 0
+
+def draw_text(canvas, text):
+    global current_text_written
+    text_obj = Text(text, 10)
+    text_obj.adjustReference(-text_obj.getDimensions()[0]//2, 0)
+    ######## IMPLEMENT HERE ########
+
+    ################################
+    current_text_written += 1
+
+
+def convert_idx_rev_to_prop(index, reversal):
+    prop = {}
+    ########## PASTE HERE ##########
+    prop['arcana'] = 'major'
+    prop['num'] = 0
+    prop['reversal'] = False
+    ################################
+    return prop
+
+
+def generate_fortune_text(prop, cheat_table):
+    fortune_text = ''
+    major_arcana_names = ['The Fool', 'The Magician', 'The High Priestess', 'The Empress', 'The Emperor', 'The Hierophant', 'The Lovers', 'The Chariot', 'Strength', 'The Hermit', 'The Wheel of Fortune', 'Justice', 'The Hanged Man', 'Death', 'Temperance', 'The Devil', 'The Tower', 'The Star', 'The Moon', 'The Sun', 'Judgement', 'The World']
+    minor_arcana_names = ['Zero', 'Ace', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Page', 'Knight', 'Queen', 'King']
+    ########## PASTE HERE ##########
+    fortune_text = 'Minor Arcana - Eight of pentacles: caution, possible loss'
+    ################################
+    return fortune_text
+
+
+def spread_cards(canvas, cards, spread_style):
+    ########## PASTE HERE ##########
+    card_img = cards[0][0]
+    canvas.add(card_img)
+    card_img.moveTo(300, 300)
+    card_img.rotate(180)
+    ################################
+
+
+def select_cards(spread_style):
+    cards = []
+    draws = random.sample(range(78), len(spread_style))
+    reversals = [random.choice((True, False)) for i in range(len(spread_style))]
+    for i in range(len(spread_style)):
+        prop = convert_idx_rev_to_prop(draws[i], reversals[i])
+        img = Image('images/card_' + prop['arcana'] + '_' + str(prop['num']) + '.jpg')
+        cards.append((img, prop))
+    return cards
+
+
+def draw_background():
+    bg_img = Image('images/background.jpg')
+    bg_img.moveTo(288, 375)
+    canvas.add(bg_img)
+
+
+if __name__ == '__main__':
+    canvas = Canvas(1020, 750, 'black')
+    draw_background()
+    spread_style = [{'coordinate': (220, 350, 0), 'question': '1. Where am I now?'},\
+    {'coordinate': (220, 350, -90), 'question': '2. What are Potential or Challenges?'},\
+    {'coordinate': (220, 525, 0), 'question': '3. Where should I directly focus?'},\
+    {'coordinate': (80, 350, 0), 'question': '4. Looking at my past...'},\
+    {'coordinate': (220, 175, 0), 'question': '5. What is my unique strength?'},\
+    {'coordinate': (360, 350, 0), 'question': '6. Glancing at the near future...'},\
+    {'coordinate': (500, 590, 0), 'question': '7. How should I approach?'},\
+    {'coordinate': (500, 430, 0), 'question': '8. What do I need to know?'},\
+    {'coordinate': (500, 270, 0), 'question': '9. What are my hopes or fears?'},\
+    {'coordinate': (500, 110, 0), 'question': '10. What will be the potential outcome?'}]
+    cards = select_cards(spread_style)
+    spread_cards(canvas, cards, spread_style)
+    for i in range(len(spread_style)):
+        draw_text(canvas, spread_style[i]['question'] + '\n' + generate_fortune_text(cards[i][1], cheat_table))
