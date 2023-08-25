@@ -1,0 +1,49 @@
+def palprime(minimum, maximum, base):
+    remainders = []
+    paliprim = []
+    if minimum < 3 and not base == 2:
+        paliprim.append('2')
+    prime = [2]
+    check = 1
+    for i in range(3, maximum + 1):
+        for j in prime:
+            if i % j == 0:
+                check = 0
+                break
+        prime.append(i)
+        if i >= minimum:
+            number = i
+            while number > 0:
+                if number % base < 10:
+                    remainders.append(str(number % base))
+                if number % base == 10:
+                    remainders.append('A')
+                if number % base == 11:
+                    remainders.append('B')
+                if number % base == 12:
+                    remainders.append('C')
+                if number % base == 13:
+                    remainders.append('D')
+                if number % base == 14:
+                    remainders.append('E')
+                if number % base == 15:
+                    remainders.append('F')
+                number //= base
+            remainders.reverse()
+            ans = ''.join(remainders)
+            remainders = []
+            for k in range(int(len(ans) / 2)):
+                if ans[k] != ans[len(ans) - 1 - k]:
+                    check = 0
+                    break
+            if check:
+                paliprim.append(ans)
+        check = 1
+    return paliprim
+
+if __name__ == "__main__":
+    print(palprime(2, 11, 10))
+    print(palprime(5, 550, 10))
+    print(palprime(5, 550, 16))
+    print(palprime(11, 99, 10))
+    print(palprime(1000, 10000, 2))
