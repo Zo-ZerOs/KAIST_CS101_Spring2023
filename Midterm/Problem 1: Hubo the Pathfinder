@@ -1,0 +1,72 @@
+from cs1robots import *
+
+
+# Implement your function here
+def turn_right(hubo):
+    for i in range(3):
+        hubo.turn_left()
+
+def find_path(hubo):
+    while 1:
+        if not hubo.front_is_clear() and not hubo.left_is_clear() and not hubo.right_is_clear():
+            hubo.drop_beeper()
+            return 0
+        if hubo.front_is_clear() and not hubo.left_is_clear() and not hubo.right_is_clear():
+            hubo.drop_beeper()
+            hubo.move()
+        elif not hubo.front_is_clear() and hubo.left_is_clear() and not hubo.right_is_clear():
+            hubo.drop_beeper()
+            hubo.turn_left()
+            hubo.move()
+        elif not hubo.front_is_clear() and not hubo.left_is_clear() and hubo.right_is_clear():
+            hubo.drop_beeper()
+            turn_right(hubo)
+            hubo.move()
+        elif not hubo.on_beeper():
+            if hubo.front_is_clear():
+                hubo.drop_beeper()
+                hubo.move()
+            elif hubo.left_is_clear():
+                hubo.drop_beeper()
+                hubo.turn_left()
+                hubo.move()
+            else :
+                hubo.drop_beeper()
+                turn_right(hubo)
+                hubo.move()
+        else :
+            count = 0
+            while hubo.on_beeper():
+                hubo.pick_beeper()
+                count += 1;
+                if count == 3:
+                    break
+            if count == 1:
+                for i in range(2):
+                    hubo.drop_beeper()
+                hubo.turn_left()
+                hubo.move()
+            elif count == 2:
+                for i in range(3):
+                    hubo.drop_beeper()
+                turn_right(hubo)
+                hubo.move()
+            else :
+                for i in range(count + 1):
+                    hubo.drop_beeper()
+                hubo.move()
+
+
+def main():
+    load_world('./tests/test3.wld') # You can modify this line to test other worlds.
+    
+    hubo = Robot(beepers=100, avenue=1,street=1, orientation="E")
+    hubo.set_trace('blue')
+
+    find_path(hubo)
+
+
+#################### DO NOT MODIFY THE CODE HERE ####################
+if __name__ == "__main__": 
+    main()
+#####################################################################
