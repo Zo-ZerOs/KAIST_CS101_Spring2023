@@ -1,0 +1,61 @@
+"""
+	Import necessary libraries
+"""
+from cs1media import *
+
+
+def downsample(input_image, rescaling_factor):
+    """
+        Implement a function that outputs a downsampled version of the input image.
+
+    Args:
+        input_image:        image to be downsampled [cs1media Picture object]
+        rescaling_factor:   downsampling factor [int]
+
+    Returns:
+        downsampled_image:  downsampled image [cs1media Picture object]
+
+    """
+    # -----
+    # TODO: Write your code here
+    return
+    # -----
+    
+    
+def upsample(input_image, rescaling_factor):
+    """
+        Implement a function that outputs an upsampled version of the input image.
+
+    Args:
+        input_image:        image to be upsampled [cs1media Picture object]
+        rescaling_factor:   upsampling factor [int]
+
+    Returns:
+        upsampled_image:    upsampled image [cs1media Picture object]
+
+    """
+    # -----
+    # TODO: Write your code here
+    return
+    # -----
+
+
+def main():
+    # ----------
+    # You can try any of the following three images.
+    img_path = './images/minion.png'
+    # img_path = './images/neobjuggi.png'
+    # img_path = './images/ryan.png'
+    # ----------
+    image = load_picture(img_path)
+    downsampling_factor = 2
+    downsampled_image = downsample(image, downsampling_factor)
+    downsampled_image.show()
+    
+    upsampling_factor = 3
+    upsampled_image = upsample(image, upsampling_factor)
+    upsampled_image.show()
+
+
+if __name__ == '__main__':
+    main()
