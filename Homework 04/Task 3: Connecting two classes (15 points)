@@ -1,0 +1,71 @@
+import csv
+
+class Song():
+    """
+    (Essential!!) Copy-paste your implementation in Task 2.1, 2.3, 2.4 for testing & grading
+    """
+    pass
+    
+def get_song_of_nth_row(file_path, n):
+    """
+    (Essential!!) Copy-paste your implementation in Task 2.2 for testing & grading
+    """
+    
+
+
+class PlayList:
+    def __init__(self, song_list):
+        """
+        Task 3.1
+            Initialize a PlayList object with given list of Song object(s)
+        
+        Arg:
+            song_list (List(Song)): a list of Song object(s)
+        """
+        pass
+    
+    def genre_set(self):
+        """
+        Task 3.2
+            Return a unique set (i.e., list without duplicates) of top_genres in song_list
+        
+        Return:
+            genres (List(str)): 
+        """
+        genre_set = []
+        
+        return genre_set
+        
+    def most_energetic_genre(self):
+        """
+        Task 3.3
+            Return the genre with the highest sum of energies in PlayList
+        
+        Return:
+            most_energetic_genre (str):
+        """
+        most_energetic_genre = ''
+        
+        return most_energetic_genre
+
+def main():
+    """
+    Feel free to modify main() to test your own codes.
+    """
+    print("###### Test for Task 3.1 ######")
+    file_path = 'top_songs.csv'
+    song_list = []
+    for i in range(10):
+        song_elem = get_song_of_nth_row(file_path, i+1)
+        song_list.append(song_elem)
+    plays = PlayList(song_list)
+    print(plays.songs[0]) # a Song object
+    
+    print("###### Test for Task 3.2 ######")
+    print(plays.genre_set())
+    
+    print("###### Test for Task 3.3 ######")
+    print(plays.most_energetic_genre())
+
+if __name__ == '__main__':
+    main()
