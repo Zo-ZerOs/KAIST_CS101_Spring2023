@@ -1,0 +1,80 @@
+import csv
+
+class Song():
+    """
+    (Essential!!) Copy-paste your implementation in Task 2.1, 2.3, 2.4 for testing & grading
+    """
+    pass
+    
+    def calculate_song_mood(self):
+        """
+        Task 4.1
+            Calculate the mood of the song object
+
+        Return:
+            song_mood (Tuple(str, float)):  the calculated mood of the song in the form of a Tuple of (mood, score)
+        """
+        pass
+
+def get_song_of_nth_row(file_path, n):
+        """
+        (Essential!!) Copy-paste your implementation in Task 2.2 for testing & grading
+        """
+
+class PlayList:
+    def __init__(self, song_list):
+        """
+        (Essential!!) Copy-paste your implementation in Task 3.1 for testing & grading
+        """
+        pass
+
+
+def create_playlist_by_mood(song_list, mood):
+    """
+    Task 4.2
+        Return a list of all songs that fits the given mood in the order of the original file
+
+    Arg:
+        song_list (List[Song]): a list of Songs
+        mood (str): one of four possible (sad, calm, happy, angry) moods given
+
+    Return:
+        mood_playlist (PlayList): PlayList object containing all songs from the given list that fits the given mood in the order of the original file
+    """
+    pass
+
+def calculate_average_bpm_by_mood(song_list):
+    """
+    Task 4.3
+        Calculate the average bpm of all the songs in each mood in descending order
+
+    Arg:
+        song_list (List[Song]): a list of Songs
+
+    Return:
+        bpm_by_mood (List[Tuple(str, float)]): a list of Tuple objects that contain (mood, average_bpm) for each of the four moods in descending order 
+    """
+    pass
+
+
+def main():
+    """
+    Feel free to modify main() to test your own codes.
+    """
+    print("###### Test for Task 4.1 ######")
+    song_list = []
+    for i in range(10):
+        song_elem = get_song_of_nth_row('top_songs.csv', i+1)
+        song_list.append(song_elem)
+    plays = PlayList(song_list)
+    print(plays.songs[0].calculate_song_mood()) # a Song object
+    
+    print("###### Test for Task 4.2 ######")
+    mood_playlist = create_playlist_by_mood(plays.songs, 'calm')
+    print(mood_playlist.songs[0])
+    
+    print("###### Test for Task 4.3 ######")
+    print(calculate_average_bpm_by_mood(plays.songs))
+
+if __name__ == '__main__':
+    main()
