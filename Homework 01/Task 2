@@ -1,0 +1,35 @@
+from cs1robots import *
+import cs1robots
+
+#----------------------------------------
+# Do not modify here!
+_world = cs1robots._world
+hubo = None
+#-----------------------------------------
+
+# Hubo named `hubo` is already created. You must not create a robot again!
+
+# You can define your own function here to be used in makeHuboMove()
+
+
+def goUntilRunOut2():
+    ###################################
+    # Implement here
+    
+    hubo.move()         #This is an example code to help you understand how it works. Erase this code.
+    hubo.turn_left()    #This is an example code to help you understand how it works. Erase this code.
+    #####################################
+    pass
+    
+#----------------------------------------
+# Do not modify main()!!
+def main():
+    if cs1robots._world == None:
+        load_world('worlds/ex1.wld') # you can modify this to test another world
+    global hubo
+    hubo = Robot(beepers=5) 
+    goUntilRunOut2()
+    
+if __name__ == "__main__":
+    main()
+#------------------------------------------
