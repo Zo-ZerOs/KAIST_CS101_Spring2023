@@ -1,0 +1,28 @@
+from cs1media import *
+
+def quant_img(input_image, num_level):
+    """
+    Convert RGB image to grayscale image and then changes the color according to representation level level_num
+
+    Args:
+        input_image: cs1media Picture object
+        num_level: image representation level (integers  in [2, 4, 8, 16, 32, 64, 128, 256])
+
+    Returns:
+        cs1media Picture object
+    """
+    # -----
+    # TODO: Write your code here
+    return 
+    # -----
+
+
+def main():
+    image = load_picture('./images/neobjuggi.png')
+    num_level = 4
+    
+    quant_gray_image = quant_img(image, num_level)
+    quant_gray_image.show()
+
+if __name__ == '__main__':
+    main()
