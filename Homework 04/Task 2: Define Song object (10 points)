@@ -1,0 +1,89 @@
+import csv
+
+class Song:
+    
+    def __init__(self, title, artist, top_genre, year, bpm, energy, danceability, dB, valence):
+        """
+        Task 2.1
+            Initialize a Song object with given information that can be achieved by parsing CSV file
+            
+        Arg:
+            information of the song correspond to each column of the csv file as follows:
+                title (str)
+                artist (str)
+                top_genre (str)
+                year (int)
+                bpm (int)
+                energy (int)
+                danceability (int)
+                dB (int)
+                valence (int)
+        """
+        pass
+        
+    def __str__(self):
+        """
+        Task 2.3
+            Return the string representation of the Song object.
+        
+        Return:
+            description (str): a string representation of the Song object which has a form of
+                “{title}: a(n) {top_genre} song released in {released_year} by {artist}.”
+        """
+        
+        description = ''
+        return description
+    
+    def __eq__(self, other):
+        """
+        Task 2.4
+            Indicate whether two Song objects are equal or not.
+        
+        Arg:
+            another (Song): a Song object that will be compared.
+        
+        Return:
+            isEqual (bool): a boolean indicates equality between two Song objects
+        """
+        isEqual = False
+        
+        return isEqual
+
+def get_song_of_nth_row(file_path, n):
+    """
+    Task 2.2
+        Parse the csv file and return a Song object correspond to the n-th row of the csv file.
+    
+    Arg:
+        file_path (string): String implies a path to the csv file
+        n (int): Integer implies the row index
+    
+    Return:
+        song_obj (Song): Song object corresponds to the n-th row in the csv file
+    """
+    pass
+
+def main():
+    """
+    Feel free to modify main() to test your own codes.
+    """
+    print("###### Test for Task 2.1 ######")
+    song_Rihanna = Song("Only Girl (In The World)", "Rihanna", "barbadian pop", 2010, 126, 72, 79, -4, 61)
+    print(song_Rihanna.artist)
+    print(song_Rihanna.year)
+    
+    print("###### Test for Task 2.2 ######")
+    song_Rihanna2 = get_song_of_nth_row('top_songs.csv', 10)
+    print(song_Rihanna2.artist)
+    print(song_Rihanna2.year)
+    
+    print("###### Test for Task 2.3 ######")
+    print(song_Rihanna)
+    
+    print("###### Test for Task 2.4 ######")
+    song_Bruno = get_song_of_nth_row('top_songs.csv', 12)
+    print(song_Bruno == song_Rihanna)
+    print(song_Rihanna == song_Rihanna2)
+
+if __name__ == "__main__":
+    main()
