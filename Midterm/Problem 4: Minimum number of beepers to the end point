@@ -1,0 +1,44 @@
+from cs1robots import *
+import cs1robots
+#----------------------------------------
+# Do not modify here!
+_world = cs1robots._world
+hubo = None
+#-----------------------------------------
+
+# Define functions here if needed
+
+def getMinimumBeepers():
+    # "hubo" is already created, so don't call Robot() again.
+    # Write your code here. 
+    count = 0
+    beeper_founded = 0
+    while 1:
+        while hubo.on_beeper():
+            hubo.pick_beeper()
+            beeper_founded += 1
+        if not hubo.front_is_clear() and not hubo.right_is_clear() and not hubo.left_is_clear():
+            return count - beeper_founded # Modify this to return the minimum number of beepers.
+        if hubo.front_is_clear():
+            count += 1
+            hubo.move()
+        elif hubo.left_is_clear():
+            count += 2
+            hubo.turn_left()
+            hubo.move()
+        elif hubo.right_is_clear():
+            count += 2
+            for i in range(3):
+                hubo.turn_left()
+            hubo.move()
+#----------------------------------------------
+# Do not modify main() except for load_world()
+def main():
+    if cs1robots._world == None:
+        load_world('worlds/ex4.wld') # Modify this to test another world
+    global hubo
+    hubo = Robot(avenue=1, street=1, beepers = 10000)
+    print("The minimum number of beepers required is", getMinimumBeepers())
+if __name__ == "__main__":
+    main()
+#------------------------------------------------
